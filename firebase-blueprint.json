@@ -1,0 +1,114 @@
+{
+  "entities": {
+    "project": {
+      "title": "Project",
+      "description": "A portfolio project item",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "subtitle": { "type": "string" },
+        "description": { "type": "string" },
+        "category": { "type": "string" },
+        "image": { "type": "string" },
+        "tags": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "ctaText": { "type": "string" },
+        "link": { "type": "string" },
+        "imageZoom": { "type": "number" },
+        "imageAspectRatio": { "type": "string" },
+        "comicPages": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "url": { "type": "string" },
+              "title": { "type": "string" },
+              "caption": { "type": "string" }
+            }
+          }
+        },
+        "details": {
+          "type": "object",
+          "properties": {
+            "client": { "type": "string" },
+            "role": { "type": "string" },
+            "date": { "type": "string" },
+            "challenge": { "type": "string" },
+            "solution": { "type": "string" },
+            "impact": { "type": "string" }
+          }
+        }
+      },
+      "required": ["id", "title", "category", "image"]
+    },
+    "category": {
+      "title": "Category",
+      "description": "A project filter category",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" }
+      },
+      "required": ["id", "name"]
+    },
+    "section": {
+      "title": "Section",
+      "description": "A customizable website section description",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "subtitle": { "type": "string" },
+        "content": { "type": "string" }
+      },
+      "required": ["id"]
+    },
+    "comment": {
+      "title": "Comment",
+      "description": "A visitor review or feedback",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "text": { "type": "string" },
+        "rating": { "type": "number" },
+        "date": { "type": "string" }
+      },
+      "required": ["id", "name", "text"]
+    },
+    "admin": {
+      "title": "Admin",
+      "description": "Admin configuration containing the passcode",
+      "type": "object",
+      "properties": {
+        "password": { "type": "string" }
+      },
+      "required": ["password"]
+    }
+  },
+  "firestore": {
+    "/projects/{projectId}": {
+      "schema": "project",
+      "description": "Portfolio projects collection"
+    },
+    "/categories/{categoryId}": {
+      "schema": "category",
+      "description": "Project categorization terms"
+    },
+    "/sections/{sectionId}": {
+      "schema": "section",
+      "description": "Homepage section copy and tags"
+    },
+    "/comments/{commentId}": {
+      "schema": "comment",
+      "description": "Visitor reviews and testimonials"
+    },
+    "/admin/config": {
+      "schema": "admin",
+      "description": "Administrative passwords"
+    }
+  }
+}
